@@ -1,6 +1,6 @@
 using System;
 
-namespace Сладкарница_Наслада.Models
+namespace SladkarnitsaNaslada.Models
 {
     public class ErrorViewModel
     {

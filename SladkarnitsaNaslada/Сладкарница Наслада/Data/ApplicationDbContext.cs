@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Сладкарница_Наслада.Entities;
+using SladkarnitsaNaslada.Entities;
 
-namespace Сладкарница_Наслада.Data
+namespace SladkarnitsaNaslada.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

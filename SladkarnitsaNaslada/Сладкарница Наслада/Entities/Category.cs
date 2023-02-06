@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Сладкарница_Наслада.Entities
+namespace SladkarnitsaNaslada.Entities
 {
-    public class Maker
+    public class Category
     {
         public int Id { get; set; }
         [Required]
-        public string MakerName { get; set; }
+        public string CategoryName { get; set; }
 
         public virtual IEnumerable<Product> Products { get; set; } = new List<Product>();
     }

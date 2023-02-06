@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
-using Сладкарница_Наслада.Data;
+using SladkarnitsaNaslada.Data;
 
-namespace Сладкарница_Наслада.Data.Migrations
+namespace SladkarnitsaNaslada.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot

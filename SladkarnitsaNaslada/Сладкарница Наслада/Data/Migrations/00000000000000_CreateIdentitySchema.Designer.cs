@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
-using Сладкарница_Наслада.Data;
+using SladkarnitsaNaslada.Data;
 
-namespace Сладкарница_Наслада.Data.Migrations
+namespace SladkarnitsaNaslada.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]

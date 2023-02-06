@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Сладкарница_Наслада.Models;
+using SladkarnitsaNaslada.Models;
 
-namespace Сладкарница_Наслада.Controllers
+namespace SladkarnitsaNaslada.Controllers
 {
     public class HomeController : Controller
     {

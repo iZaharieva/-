@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Сладкарница_Наслада.Entities
+namespace SladkarnitsaNaslada.Entities
 {
     public class Order
     {

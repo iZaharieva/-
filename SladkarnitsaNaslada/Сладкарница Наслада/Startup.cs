@@ -11,9 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Сладкарница_Наслада.Data;
+using SladkarnitsaNaslada.Data;
 
-namespace Сладкарница_Наслада
+namespace SladkarnitsaNaslada
 {
     public class Startup
     {
