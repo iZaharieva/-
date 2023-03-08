@@ -7,7 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Sladkarnitsa_Naslada.Abstraction;
 using Sladkarnitsa_Naslada.Data;
+using Sladkarnitsa_Naslada.Entities;
+using Sladkarnitsa_Naslada.Infrastructure;
+using Sladkarnitsa_Naslada.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,13 +32,22 @@ namespace Sladkarnitsa_Naslada
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
+                options.UseLazyLoadingProxies()
+                .UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IMakerService, MakerService>();
+
             services.AddControllersWithViews();
+
+            services.AddTransient<IProductService, ProductService>();
             services.AddRazorPages();
             services.Configure<IdentityOptions>(option =>
             {
@@ -50,6 +63,7 @@ namespace Sladkarnitsa_Naslada
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.PrepareDatabase();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,7 +82,7 @@ namespace Sladkarnitsa_Naslada
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
