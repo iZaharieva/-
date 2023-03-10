@@ -44,6 +44,7 @@ namespace Sladkarnitsa_Naslada
 
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IMakerService, MakerService>();
+            services.AddTransient<IStatisticsService, StatisticService>();
 
             services.AddControllersWithViews();
 

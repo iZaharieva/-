@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Sladkarnitsa_Naslada.Models.Product.ProductIndexVM>
+﻿@using Sladkarnitsa_Naslada.Models.Order
+@model IEnumerable<Sladkarnitsa_Naslada.Models.Product.ProductIndexVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -29,14 +30,14 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             @*<th>
-                    @Html.DisplayNameFor(model => model.CategoryId)
-                </th>*@
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.CategoryName)
             </th>
             @*<th>
-                    @Html.DisplayNameFor(model => model.MakerId)
-                </th>*@
+            @Html.DisplayNameFor(model => model.MakerId)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.MakerName)
             </th>
@@ -55,55 +56,69 @@
             <th>
                 @Html.DisplayNameFor(model => model.Discount)
             </th>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <th>Order</th>
+            }
+
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.CategoryId)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.MakerId)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.MakerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.MakerId)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.MakerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
 
-                    <img src="@Html.DisplayFor(modelItem => item.Photo)" alt="Photo" width="100" />
-                </td>
+                <img src="@Html.DisplayFor(modelItem => item.Photo)" alt="Photo" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            @if (this.User.Identity.IsAuthenticated)
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @await Html.PartialAsync("_OrderPartialView", new OrderConfirmVM
+               {
+                   ProductId = item.Id
+               })
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Discount)
-                </td>
-                <td>
-                    @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                                                                              } |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-                    {
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>}
-                </td>
-            </tr>
+            }
+            <td>
+                @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                } |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                {
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>}
+            </td>
+        </tr>
         }
     </tbody>
 </table>
