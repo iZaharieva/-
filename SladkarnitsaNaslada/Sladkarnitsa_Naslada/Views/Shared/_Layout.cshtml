@@ -9,11 +9,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #dfe7fd; font-size: 20px ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #dee2ff; font-size: 20px ">
             <div class="container">
                
 
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/images/logo3.png" width="130" /></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/images/logo5.png.png" width="170" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,8 +27,33 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact us</a>
+                        </li>
+                        <li class="nav-item active">
+                            <div class="dropdown show">
+                                <a class="nav-link active dropdown-toggle" href="#"
+                                   id="dropdownMenuLink" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    Category
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Wedding&SearchStringMakerName=">Wedding cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Homemade&SearchStringMakerName=">Homemade cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Chocolate&SearchStringMakerName=">Chocolate cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Kids&SearchStringMakerName=">Kids cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Party&SearchStringMakerName=">Party cakes</a>
+
+                                </div>
+                            </div>
+                        </li>
+
+
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
                             <li class="nav-item active">

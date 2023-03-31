@@ -4,8 +4,12 @@
 @{
     ViewData["Title"] = "Log in";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Login.css" />
 
-<h1>@ViewData["Title"]</h1>
+</head>
+
+@*<h1>@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-4">
         <section>
@@ -78,7 +82,70 @@
             }
         </section>
     </div>
+</div>*@
+
+
+
+
+
+
+
+<div class="login-reg-panel" style="margin-top:300px">
+    <div class="login-info-box">
+        <h2>Have an account?</h2>
+        <p>Log in!</p>
+        <label id="label-register" for="log-reg-show">Login</label>
+        <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+    </div>
+
+    @*<div class="register-info-box">
+        <h2>Don't have an account?</h2>
+        <p>Lorem ipsum dolor sit amet</p>
+        <label id="label-login" for="log-login-show" >Register</label>
+        <input type="radio" name="active-log-panel" id="log-login-show">
+    </div>*@
+
+    <div class="white-panel">
+        <div class="login-show">
+            <h2>LOGIN</h2>
+            <label asp-for="Input.UserName"></label>
+            <input asp-for="Input.UserName" class="form-control" />
+            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+            <div class="checkbox">
+                <label asp-for="Input.RememberMe">
+                    <input asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Log in</button>
+            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+            <p>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+            </p>
+            <p>
+                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+            </p>
+        </div>
+        @*<div class="register-show">
+            <h2>REGISTER</h2>
+            <input type="text" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
+            <input type="button" value="Register">
+        </div>*@
+    </div>
 </div>
+
+
+
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
