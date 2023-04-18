@@ -19,7 +19,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1" style="font-family: 'Times New Roman', Times, serif">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -35,6 +35,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact us</a>
                         </li>
+                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Client")))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="MyOrders">My orders</a>
+                            </li>
+}
                         <li class="nav-item active">
                             <div class="dropdown show">
                                 <a class="nav-link active dropdown-toggle" href="#"
@@ -43,11 +49,13 @@
                                     Category
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Wedding&SearchStringMakerName=">Wedding cakes</a>
-                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Homemade&SearchStringMakerName=">Homemade cakes</a>
-                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Chocolate&SearchStringMakerName=">Chocolate cakes</a>
-                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Kids&SearchStringMakerName=">Kids cakes</a>
                                     <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Party&SearchStringMakerName=">Party cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Wedding&SearchStringMakerName=">Wedding cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Chocolate&SearchStringMakerName=">Chocolate cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Homemade&SearchStringMakerName=">Homemade cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Sugar&SearchStringMakerName=">Sugar sweets</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Classic&SearchStringMakerName=">Classic cakes</a>
+                                    <a class="dropdown-item" href="/Product/Index?SearchStringCategoryName=Child&SearchStringMakerName=">Child cakes</a>
 
                                 </div>
                             </div>
@@ -79,7 +87,7 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 mb-5">
             @RenderBody()
         </main>
     </div>

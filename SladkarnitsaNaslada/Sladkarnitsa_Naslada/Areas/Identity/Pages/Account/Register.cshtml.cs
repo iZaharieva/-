@@ -59,8 +59,8 @@ namespace Sladkarnitsa_Naslada.Areas.Identity.Pages.Account
             public string Address { get; set; }
 
             [Required]
-            [Display(Name = "Username")]
-            public string Username { get; set; }
+            [Display(Name = "UserName")]
+            public string UserName { get; set; }
 
             [Required]
             [EmailAddress]
@@ -92,7 +92,7 @@ namespace Sladkarnitsa_Naslada.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { FirstName = Input.FirstName, LastName = Input.LastName,
-                Address=Input.Address, UserName = Input.Username , Email = Input.Email };
+                Address=Input.Address, UserName = Input.UserName , Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

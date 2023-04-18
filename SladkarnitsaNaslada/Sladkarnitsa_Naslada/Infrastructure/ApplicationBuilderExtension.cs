@@ -72,8 +72,10 @@ namespace Sladkarnitsa_Naslada.Infrastructure
             {
                 new Category {CategoryName="Party Cakes"},
                 new Category {CategoryName="Wedding Cakes"},
-                new Category {CategoryName="Classic Cakes"},
+                new Category {CategoryName="Chocolate Cakes"},
+                new Category {CategoryName="Homemade Cakes"},
                 new Category {CategoryName="Sugar Sweets"},
+                new Category {CategoryName="Classic Cakes"},
                 new Category {CategoryName="Child Cakes"}
             });
             dataCategory.SaveChanges();

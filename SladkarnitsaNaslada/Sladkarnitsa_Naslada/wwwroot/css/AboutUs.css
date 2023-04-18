@@ -23,15 +23,15 @@ html {
     margin: 8px;
 }
 
-.about-section {
-    padding: 50px;
+/*.about-section {
+    padding:70px;
     text-align: center;
-    background-image: #474e5d;
+    background-color: mediumpurple ;
     color: white;
-}
+}*/
 
 .container {
-    padding: 0 16px;
+    padding: 16px;
 }
 
     .container::after, .row::after {
